@@ -1,0 +1,245 @@
+:root {
+    --primary-color: #EE4D2D;
+    --white-color: #fff;
+    --black-color: #000;
+    --text-color: #333;
+    --border-color: #dbdbdb;
+    --star-gold-color: #FFCE3E;
+
+    --header-height: 120px;
+    --navbar-height: 34px;
+    --header-width-search-height: calc(var(--header-height) - var(--navbar-height));
+    --header-sort-bar-height: 46px;
+}
+
+* {
+    /* Kế thừa từ thẻ chữ nó */
+    box-sizing: inherit;
+}
+
+html {
+    /* 62.5% = 1 rem = 10px*/
+    font-size: 62.5%;
+    /* Chiều cao dòng */
+    line-height: 1.6rem;
+    /* Font Roboto, tập hơp các chủng chữ không chân */
+    font-family: 'Roboto', sans-serif;
+    box-sizing: border-box;
+}
+
+/* Responsive */
+.select-input__list {
+    display: flex;
+    /* Tổng độ dài của thằng con vượt quá row khi đó sẽ bị nhảy xuống hàng */
+    flex-wrap: wrap;
+    margin-left: -5px;
+    margin-right: -5px;
+}
+
+.grid__column-2 {
+    padding-left: 5px;
+    padding-right: 5px;
+    width: 16.6667%;
+}
+
+.grid__column-2-4 {
+    padding-left: 5px;
+    padding-right: 5px;
+    width: 20%;
+}
+
+.grid__column-10 {
+    padding-left: 5px;
+    padding-right: 5px;
+    width: 83.3334%;
+}
+
+/* Animation */
+@keyframes fadeIn {
+    from {
+        /* Độ trong suốt giá trị từ 0-1 */
+        opacity: 0;
+    } to {
+        /* Độ trong suốt giá trị từ 0-1 */
+        opacity: 1;
+    }
+}
+
+@keyframes growth {
+    from {
+        /* Scale độ phóng to thu nhỏ */
+        transform: scale(var(--growth-from));
+    }  to {
+        /* Scale độ phóng to thu nhỏ */
+        transform: scale(var(--growth-to));
+    }
+}
+
+/* Modal */
+.modal {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    animation: fadeIn linear 0.1s;
+    display: none;
+}
+
+.modal.open {
+    display: flex;
+}
+
+.modal__overlay {
+    /* Phụ thuộc vào thẻ cha gần nhất có thuộc tính position làm góc tọa độ*/
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal__body {
+    margin: auto;
+    /* Thứ tự chồng lên nhau */
+    z-index: 1;
+    /* Di chuyển từ kích thước 70% */
+    --growth-from: 0.7;
+    /* Di chuyển đến kích thước nguyên vẹn của nó */
+    --growth-to: 1;
+    /* Tên keyframes , kiểu chuyển động, thời gian chạy */
+    animation: growth linear 0.2s;
+}
+
+/* Button style */
+.btn {
+    /* Chiều rộng tối thiểu */
+    min-width: 124px;
+    height: 34px;
+    /* Bỏ gạch chân chữ */
+    text-decoration: none;
+    border: none;
+    /* Bo tròn góc ảnh */
+    border-radius: 2px;
+    font-size: 1.5rem;
+    padding: 0 12px;
+    /* Bỏ uotline input */
+    outline: none;
+    /* Thay đổi con trỏ chuột thành hình bàn tay */
+    cursor: pointer;
+    color: var(--text-color);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    /* Chiều cao dòng */
+    line-height: 1.6rem;
+}
+
+.btn.btn--normal:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+.btn .btn--size-s {
+    height: 32px;
+    font-size: 1.2rem;
+    padding: 0 8px;
+}
+
+.btn.btn--primary {
+    color: var(--white-color);
+    background-color: var(--primary-color);
+}
+
+.btn.btn--disabled {
+    color: #949494;
+    /* Con trỏ mặc định */
+    cursor: default;
+    background-color: #c3c3c3;
+}
+
+/* Selection */
+.select-input {
+    position: relative;
+    min-width: 200px;
+    height: 34px;
+    padding: 0 12px;
+    border-radius: 2px;
+    background-color: var(--white-color);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.select-input__label {
+    font-size: 1.4rem;
+}
+
+.select-input__icon {
+    font-size: 1.4rem;
+    color: rgba(131, 131, 131);
+    position: relative;
+    top: 1px;
+}
+
+.select-input:hover .select-input__list {
+    display: block;
+}
+
+.select-input__list {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 25px;
+    border-radius: 2px;
+    background-color: var(--white-color);
+    padding: 8px 16px;
+    list-style: none;
+    display: none;
+    z-index: 1;
+}
+
+.select-input__link {
+    font-size: 1.4rem;
+    color: var(--text-color);
+    text-decoration: none;
+    display: block;
+    padding: 8px 0;
+}
+
+.select-input__link:hover {
+    color: var(--primary-color);
+}
+
+/* Pagination */
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+}
+
+.pagination-item {
+    margin: 0 12px;
+}
+
+.pagination-item--active .pagination-item__link {
+    color: var(--white-color);
+    background-color: var(--primary-color);
+}
+
+.pagination-item--active:hover .pagination-item__link {
+    background-color: #ed5c3f;
+}
+
+.pagination-item__link {
+    display: block;
+    text-decoration: none;
+    font-weight: 300;
+    font-size: 2rem;
+    color: #939393;
+    min-width: 40px;
+    height: 30px;
+    text-align: center;
+    line-height: 30px;
+    border-radius: 2px;
+}
